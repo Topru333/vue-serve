@@ -5,6 +5,7 @@ const config = require('./config')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
+const google = require('googleapis')
 
 const db = new DB('sqlitedb')
 const app = express()
@@ -22,6 +23,15 @@ const allowCrossDomain = function (req, res, next) {
 }
 
 app.use(allowCrossDomain)
+
+let OAuth2 = google.auth.OAuth2
+
+
+
+let scopes = [
+  'profile',
+  'email'
+]
 
 router.post('/login', (req, res) => {
   db.selectByEmail(req.body.email, (err, user) => {

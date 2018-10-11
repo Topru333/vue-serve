@@ -16,6 +16,9 @@
       <button type="submit" @click="handleSubmit">
         Login
       </button>
+      <button type="submit">
+        Google Log in
+      </button>
     </div>
   </form>
 </div>
